@@ -20,7 +20,7 @@ public protocol JSONParsingPrimitive: JSONParsing {}
 
 public extension JSONParsingPrimitive {
 
-	public static func parse(_ json: JSON) throws -> Self {
+	static func parse(_ json: JSON) throws -> Self {
 		if let object = json.object {
 			if let res = object as? Self {
 				return res
@@ -50,7 +50,7 @@ public protocol JSONParsingRawRepresentable: RawRepresentable, JSONParsing where
 
 public extension JSONParsingRawRepresentable {
 
-	public static func parse(_ json: JSON) throws -> Self {
+	static func parse(_ json: JSON) throws -> Self {
 		if let enumVal = try Self(rawValue: json^) {
 			return enumVal
 		} else {
